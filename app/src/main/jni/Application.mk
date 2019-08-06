@@ -1,0 +1,1 @@
+APP_ABI := all # Pedimos todas las arquitecturas al compilar la librería
