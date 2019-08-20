@@ -11,7 +11,8 @@ suma está hecha en el lenguaje C.
 # Guía
 
 Esta guía está separada en varias partes, la integración de codigo C en el cual
-muestro como escribir codigo C en un proyecto de Android, la creación de las librerías compartidas `.so`, el consumo de dichas librerias y por ultimo la importación de la librería en un proyecto distinto al donde fue construida.
+muestro como escribir codigo C en un proyecto de Android, la creación de las librerías compartidas `.so`, el consumo de dichas librerias, la importación de la librería en un proyecto distinto al donde fue construida y por ultimo usaremos codigo C++ en vez de C y
+agregaremos logs para verlos en el LogCat de Android Studio.
 
 ## Integración con codigo C
 
@@ -123,6 +124,47 @@ Hacemos el mismo procedimiento en el archivo donde importamos la cabecera e impl
 La ultima parte donde debemos cambiarlo es en el archivo Android.mk para que construya las librerías partiendo de los archivos renombrados. 
 
 Y listo, lo que sigue es volver a construir las librerías utilizando el comando `ndk-build` tal como lo hicimos anteriormente.
+
+## Usar codigo C++ e imprimir logs 
+
+Ahora lo que queremos es usar codigo C++ en vez de C, para eso simplemente renombramos nuestro archivo `.c` a `.cpp`, sin embargo, si 
+utilizamos importaciones como `#include <string>` vamos a notar el siguiente error.
+
+<img alt="Librerías compiladas" src="https://github.com/CrissAlvarezH/ImagenesRepos/blob/master/imgs/AddCodigoCEnAndroid/error_incluir_string_cpp.png" />
+
+</br>
+
+Para solucionarlo agregamos la siguiente linea al archivo `Application.mk`
+
+<img alt="Librerías compiladas" src="https://github.com/CrissAlvarezH/ImagenesRepos/blob/master/imgs/AddCodigoCEnAndroid/add_soporte_cpp_applicationmk.png" />
+
+</br>
+
+Una vez agregada esa linea, volvemos a construir la librería y no se presenta ningun problema.
+Ahora procederemos a implementar codigo C++ y a agregar Logs para poder verlos en nuestra consola.
+Para agregar logs incluimos la cabecera: `android/log.h` en nuestro codigo. Posteriormente agregamos la siguiente linea en `Android.mk`
+
+<img alt="Librerías compiladas" src="https://github.com/CrissAlvarezH/ImagenesRepos/blob/master/imgs/AddCodigoCEnAndroid/add_lib_para_logs_androidmk.png" />
+
+</br>
+
+Con esto agregado podemos utilizar la siguiente funcion para imprimir logs.
+
+<img alt="Librerías compiladas" src="https://github.com/CrissAlvarezH/ImagenesRepos/blob/master/imgs/AddCodigoCEnAndroid/logs_android_en_cpp.png" />
+
+</br>
+
+Si todo lo anterior está OK, el resultado será el siguiente
+
+<img alt="Librerías compiladas" src="https://github.com/CrissAlvarezH/ImagenesRepos/blob/master/imgs/AddCodigoCEnAndroid/log_cpp.png" />
+
+En la imagen de arriba podemos ver en el LogCat los logs que definimos en el codigo de C++
+
+
+
+
+
+
 
 
 
