@@ -1,0 +1,5 @@
+./obj/local/x86_64/objs/sumar/com_paquete_deprueba_importacion_librearia_libreria_ClaseNativa.o: \
+  jni\com_paquete_deprueba_importacion_librearia_libreria_ClaseNativa.c \
+  jni\com_paquete_deprueba_importacion_librearia_libreria_ClaseNativa.h
+
+jni\com_paquete_deprueba_importacion_librearia_libreria_ClaseNativa.h:
